@@ -1,0 +1,7 @@
+name = "pitch-demos"
+compatibility_date = "2026-02-19"
+compatibility_flags = ["nodejs_compat"]
+main = "src/worker.js"
+
+[assets]
+directory = "./public"

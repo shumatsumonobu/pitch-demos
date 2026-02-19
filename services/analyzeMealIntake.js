@@ -1,10 +1,5 @@
-import {readFileSync} from 'node:fs';
-import {resolve, dirname} from 'node:path';
-import {fileURLToPath} from 'node:url';
 import {GoogleGenAI, ThinkingLevel} from '@google/genai';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const PROMPT = readFileSync(resolve(__dirname, '../prompts/meal-intake.md'), 'utf8');
+import PROMPT from '../prompts/meal-intake.js';
 
 const RESPONSE_SCHEMA = {
   type: 'array',
@@ -25,23 +20,14 @@ const RESPONSE_SCHEMA = {
   },
 };
 
+// AI Studio APIキー認証
+const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+
 /**
  * 食事画像をGemini 3 Flashで解析し、品目ごとの摂取率を返す
  * @param {string} imageDataUrl Data URL形式の画像
  * @returns {Promise<Array<{name: string, intakePercent: number}>>}
  */
-// AI Studio APIキー認証
-// const ai = new GoogleGenAI({apiKey: 'YOUR_API_KEY'});
-
-// Vertex AI サービスアカウント認証
-const credentials = JSON.parse(readFileSync(resolve(__dirname, '../credentials/pitch-demos-a30fbe9d4016.json'), 'utf8'));
-const ai = new GoogleGenAI({
-  vertexai: true,
-  project: 'pitch-demos',
-  location: 'global',
-  googleAuthOptions: {credentials},
-});
-
 export default async function analyzeMealIntake(imageDataUrl) {
 
   // Data URLからbase64とMIMEタイプを抽出

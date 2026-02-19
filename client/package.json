@@ -1,5 +1,5 @@
 {
-  "name": "ocr-suite-client",
+  "name": "pitch-demos-client",
   "version": "1.0.0",
   "scripts": {
     "build": "webpack --mode=production",

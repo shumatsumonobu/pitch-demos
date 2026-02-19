@@ -2,10 +2,18 @@
 
 ## 2026-02-19
 
-- 使用状況ページ追加 (`/status`) — 1日のAPI使用数・残数を表示
+- Cloudflare Workers 対応（ローカル互換維持）
+  - `express-handlebars` → `handlebars` 直接使用（テンプレートをJS template literalに変換）
+  - プロンプトを `.md` → `.js` エクスポートに変換
+  - Vertex AI サービスアカウント → AI Studio APIキー認証に切り替え
+  - デイリーリミットのファイル永続化を削除（インメモリのみ）
+  - `src/worker.js` (Workersエントリポイント)、`wrangler.toml` 追加
+- プロジェクト構成をフラット化（`ocr-suite/` → ルート直下）
+- プロジェクト名を `ocr-suite` → `pitch-demos` にリネーム
+- `compatibility_date` を `wrangler.toml` に追加
+- `.env.example` 追加
+- 使用状況ページ追加 (`/status`)
 - 判定結果にタブ切り替え追加（テーブル / JSON）
-- リクエストカウンターをファイル永続化（再起動後も維持）
-- nodemon の `--ignore data/` 追加
 
 ## 2026-02-18
 

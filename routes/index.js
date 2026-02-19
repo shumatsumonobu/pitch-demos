@@ -1,4 +1,5 @@
 import {Router} from 'express';
+import {renderView} from '../lib/render.js';
 import {getStatus} from '../middlewares/dailyLimit.js';
 
 const router = Router();
@@ -8,8 +9,8 @@ const router = Router();
  * @name GET /
  */
 router.get('/', (req, res) => {
-  res.render('meal-intake', {
-    title: '食事摂取量 AI 判定 | AI-OCR Suite',
+  renderView(res, 'meal-intake', {
+    title: '食事摂取量 AI 判定 | Pitch Demos',
     script: '/build/meal-intake.js',
     isHome: true,
   });
@@ -21,8 +22,8 @@ router.get('/', (req, res) => {
  */
 router.get('/status', (req, res) => {
   const {requestCount, dailyLimit} = getStatus();
-  res.render('status', {
-    title: '使用状況 | AI-OCR Suite',
+  renderView(res, 'status', {
+    title: '使用状況 | Pitch Demos',
     isStatus: true,
     requestCount,
     dailyLimit,

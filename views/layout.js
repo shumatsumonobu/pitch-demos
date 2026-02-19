@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+export default `<!DOCTYPE html>
 <html lang="ja" data-theme="light">
 <head>
   <title>{{title}}</title>
@@ -22,7 +22,7 @@
           <li><a href="/status" class="{{#if isStatus}}font-semibold{{/if}}">使用状況</a></li>
         </ul>
       </div>
-      <a href="/" class="btn btn-ghost text-xl font-bold tracking-tight">AI-OCR Suite</a>
+      <a href="/" class="btn btn-ghost text-xl font-bold tracking-tight">Pitch Demos</a>
       <div class="hidden lg:flex ml-6 gap-6">
         <a href="/" class="text-sm {{#if isHome}}text-base-content{{else}}text-base-content/60 hover:text-base-content{{/if}} transition-colors">食事摂取量</a>
         <a href="/status" class="text-sm {{#if isStatus}}text-base-content{{else}}text-base-content/60 hover:text-base-content{{/if}} transition-colors">使用状況</a>
@@ -39,4 +39,4 @@
   <script src="{{script}}"></script>
   {{/if}}
 </body>
-</html>
+</html>`;

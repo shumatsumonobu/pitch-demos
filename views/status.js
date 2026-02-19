@@ -1,4 +1,4 @@
-<div class="max-w-lg mx-auto mt-6">
+export default `<div class="max-w-lg mx-auto mt-6">
   <div class="card bg-base-100 shadow-none border border-base-300">
     <div class="card-body">
       <h2 class="card-title text-lg font-normal">API 使用状況</h2>
@@ -31,4 +31,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>`;

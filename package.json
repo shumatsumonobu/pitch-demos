@@ -1,5 +1,5 @@
 {
-  "name": "ocr-suite",
+  "name": "pitch-demos",
   "version": "1.0.0",
   "type": "module",
   "imports": {
@@ -7,18 +7,21 @@
   },
   "scripts": {
     "start": "node bin/www",
-    "dev": "nodemon --ignore client/ --ignore public/ --ignore views/ --ignore data/ bin/www"
+    "dev": "nodemon --ignore client/ --ignore public/ --ignore views/ --ignore data/ bin/www",
+    "deploy": "wrangler deploy",
+    "dev:workers": "wrangler dev"
   },
   "dependencies": {
     "@google/genai": "^1.34.0",
     "debug": "~2.6.9",
     "dotenv": "^16.5.0",
     "express": "^4.21.0",
-    "express-handlebars": "^8.0.1",
     "express-validator": "^6.14.2",
+    "handlebars": "^4.7.8",
     "http-errors": "~1.6.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "wrangler": "^4.0.0"
   }
 }

@@ -38,7 +38,7 @@ const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 const server = http.createServer(app);
-const debug = Debug('ocr-suite:server');
+const debug = Debug('pitch-demos:server');
 
 server.listen(port);
 server.on('error', onError);
