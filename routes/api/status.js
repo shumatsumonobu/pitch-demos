@@ -7,8 +7,8 @@ const router = Router();
  * API使用状況
  * @name GET /api/status
  */
-router.get('/status', (req, res) => {
-  const {requestCount, dailyLimit} = getStatus();
+router.get('/status', async (req, res) => {
+  const {requestCount, dailyLimit} = await getStatus();
   res.json({
     requestCount,
     dailyLimit,

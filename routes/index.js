@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
  * 使用状況ビュー
  * @name GET /status
  */
-router.get('/status', (req, res) => {
-  const {requestCount, dailyLimit} = getStatus();
+router.get('/status', async (req, res) => {
+  const {requestCount, dailyLimit} = await getStatus();
   renderView(res, 'status', {
     title: '使用状況 | Pitch Demos',
     isStatus: true,

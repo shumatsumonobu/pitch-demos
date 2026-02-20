@@ -42,7 +42,7 @@ npm start
 - **テンプレート:** JS template literal 関数でエクスポート、`lib/render.js` が呼び出し（Workers互換のためfs・Handlebars不使用）
 - **webpack出力:** `client/src/` → `public/build/` (JS, CSS, メディア)
 - **Tailwindスキャン対象:** `views/**/*.js` と `client/src/**/*.js`
-- **レート制限:** `middlewares/dailyLimit.js` で1日50回（インメモリ、再起動でリセット）
+- **レート制限:** `middlewares/dailyLimit.js` で1日50回。Workers では KV (`DAILY_COUNTER`) に永続化、ローカルではインメモリフォールバック
 - **nodemon除外:** `client/`, `public/`, `views/`, `data/`
 - **リクエストボディ上限:** 100MB (base64画像用)
 - **AI応答:** 決定的設定 (temperature=0, topP=0, topK=1) + 構造化JSONスキーマ

@@ -2,6 +2,7 @@
 
 ## 2026-02-20
 
+- デイリーリミットのカウンターを Workers KV に永続化（ローカルはインメモリフォールバック）
 - Cloudflare Workers へ初回デプロイ
 - Handlebars 依存を完全に除去（Workers が `new Function()` を禁止するため）
   - テンプレートを JS template literal 関数に変換
@@ -19,7 +20,7 @@
   - `express-handlebars` → `handlebars` 直接使用（テンプレートをJS template literalに変換）
   - プロンプトを `.md` → `.js` エクスポートに変換
   - Vertex AI サービスアカウント → AI Studio APIキー認証に切り替え
-  - デイリーリミットのファイル永続化を削除（インメモリのみ）
+  - デイリーリミットのファイル永続化を削除
   - `src/worker.js` (Workersエントリポイント)、`wrangler.toml` 追加
 - プロジェクト構成をフラット化（`ocr-suite/` → ルート直下）
 - プロジェクト名を `ocr-suite` → `pitch-demos` にリネーム

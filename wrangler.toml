@@ -8,5 +8,9 @@ main = "src/worker.js"
 [alias]
 "iconv-lite" = "./shims/iconv-lite.js"
 
+[[kv_namespaces]]
+binding = "DAILY_COUNTER"
+id = "58df44f0a35941749b867e15ee34436d"
+
 [assets]
 directory = "./public"
