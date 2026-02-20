@@ -3,5 +3,10 @@ compatibility_date = "2026-02-19"
 compatibility_flags = ["nodejs_compat"]
 main = "src/worker.js"
 
+# iconv-lite が Node.js streams を読み込もうとして Workers で失敗するため、
+# 最小限のシムに差し替える（body-parser 経由の依存）
+[alias]
+"iconv-lite" = "./shims/iconv-lite.js"
+
 [assets]
 directory = "./public"

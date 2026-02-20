@@ -20,8 +20,12 @@ const RESPONSE_SCHEMA = {
   },
 };
 
-// AI Studio APIキー認証
-const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+// AI Studio APIキー認証（Workers ではシークレットが実行時のみ利用可能なため遅延初期化）
+let ai;
+function getClient() {
+  if (!ai) ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  return ai;
+}
 
 /**
  * 食事画像をGemini 3 Flashで解析し、品目ごとの摂取率を返す
@@ -40,7 +44,7 @@ export default async function analyzeMealIntake(imageDataUrl) {
   const startTime = performance.now();
 
   try {
-    const response = await ai.models.generateContent({
+    const response = await getClient().models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: [
         {

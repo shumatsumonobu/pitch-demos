@@ -1,7 +1,9 @@
-export default `<!DOCTYPE html>
+import {esc} from '../lib/html.js';
+
+export default (data) => `<!DOCTYPE html>
 <html lang="ja" data-theme="light">
 <head>
-  <title>{{title}}</title>
+  <title>${esc(data.title)}</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
@@ -18,25 +20,23 @@ export default `<!DOCTYPE html>
           </svg>
         </div>
         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 text-base-content rounded-box z-10 mt-3 w-52 p-2 shadow-lg">
-          <li><a href="/" class="{{#if isHome}}font-semibold{{/if}}">食事摂取量</a></li>
-          <li><a href="/status" class="{{#if isStatus}}font-semibold{{/if}}">使用状況</a></li>
+          <li><a href="/" class="${data.isHome ? 'font-semibold' : ''}">食事摂取量</a></li>
+          <li><a href="/status" class="${data.isStatus ? 'font-semibold' : ''}">使用状況</a></li>
         </ul>
       </div>
       <a href="/" class="btn btn-ghost text-xl font-bold tracking-tight">Pitch Demos</a>
       <div class="hidden lg:flex ml-6 gap-6">
-        <a href="/" class="text-sm {{#if isHome}}text-base-content{{else}}text-base-content/60 hover:text-base-content{{/if}} transition-colors">食事摂取量</a>
-        <a href="/status" class="text-sm {{#if isStatus}}text-base-content{{else}}text-base-content/60 hover:text-base-content{{/if}} transition-colors">使用状況</a>
+        <a href="/" class="text-sm ${data.isHome ? 'text-base-content' : 'text-base-content/60 hover:text-base-content'} transition-colors">食事摂取量</a>
+        <a href="/status" class="text-sm ${data.isStatus ? 'text-base-content' : 'text-base-content/60 hover:text-base-content'} transition-colors">使用状況</a>
       </div>
     </div>
   </div>
 
   <!-- Content -->
   <main class="container mx-auto p-4 lg:p-6">
-    {{{body}}}
+    ${data.body}
   </main>
 
-  {{#if script}}
-  <script src="{{script}}"></script>
-  {{/if}}
+  ${data.script ? `<script src="${esc(data.script)}"></script>` : ''}
 </body>
 </html>`;

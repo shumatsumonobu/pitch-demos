@@ -1,4 +1,4 @@
-export default `<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+export default () => `<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
   <!-- 左: 画像アップロード -->
   <div class="card bg-base-100 shadow-none rounded-sm border border-base-300">
     <div class="card-body">

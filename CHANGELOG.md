@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-02-20
+
+- Cloudflare Workers へ初回デプロイ
+- Handlebars 依存を完全に除去（Workers が `new Function()` を禁止するため）
+  - テンプレートを JS template literal 関数に変換
+  - `lib/html.js` に HTMLエスケープユーティリティ追加
+- iconv-lite シム追加（`shims/iconv-lite.js`、wrangler バグ [#9309](https://github.com/cloudflare/workers-sdk/issues/9309) 回避）
+- Workers エントリを `httpServerHandler`（`cloudflare:node`）に変更
+- Gemini クライアントを遅延初期化（Workers シークレットのタイミング対応）
+- `express.static` を try/catch でラップ（バンドル後の `import.meta.url` 対応）
+- サンプル画像ファイル名を日本語 → ASCII にリネーム（Wrangler のマニフェスト制約）
+- README にログ・シークレット管理・Workers 固有対応を追記
+
 ## 2026-02-19
 
 - Cloudflare Workers 対応（ローカル互換維持）

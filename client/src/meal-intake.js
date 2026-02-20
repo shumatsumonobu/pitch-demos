@@ -24,18 +24,18 @@ let elapsedTimer = null;
 
 // サンプル画像パス
 const SAMPLES = {
-  'fish-0':   '/build/media/samples/meal-intake/魚料理_0_摂取率0%.JPG',
-  'fish-20':  '/build/media/samples/meal-intake/魚料理_1_摂取率20%.JPG',
-  'fish-40':  '/build/media/samples/meal-intake/魚料理_2_摂取率40%.JPG',
-  'fish-60':  '/build/media/samples/meal-intake/魚料理_3_摂取率60%.JPG',
-  'fish-80':  '/build/media/samples/meal-intake/魚料理_4_摂取率80%.JPG',
-  'fish-100': '/build/media/samples/meal-intake/魚料理_5_摂取率100%.JPG',
-  'meat-0':   '/build/media/samples/meal-intake/肉料理_0_摂取率0%.JPG',
-  'meat-20':  '/build/media/samples/meal-intake/肉料理_1_摂取率20%.JPG',
-  'meat-40':  '/build/media/samples/meal-intake/肉料理_2_摂取率40%.JPG',
-  'meat-60':  '/build/media/samples/meal-intake/肉料理_3_摂取率60%.JPG',
-  'meat-80':  '/build/media/samples/meal-intake/肉料理_4_摂取率80%.JPG',
-  'meat-100': '/build/media/samples/meal-intake/肉料理_5_摂取率100%.JPG',
+  'fish-0':   '/build/media/samples/meal-intake/fish_0.jpg',
+  'fish-20':  '/build/media/samples/meal-intake/fish_20.jpg',
+  'fish-40':  '/build/media/samples/meal-intake/fish_40.jpg',
+  'fish-60':  '/build/media/samples/meal-intake/fish_60.jpg',
+  'fish-80':  '/build/media/samples/meal-intake/fish_80.jpg',
+  'fish-100': '/build/media/samples/meal-intake/fish_100.jpg',
+  'meat-0':   '/build/media/samples/meal-intake/meat_0.jpg',
+  'meat-20':  '/build/media/samples/meal-intake/meat_20.jpg',
+  'meat-40':  '/build/media/samples/meal-intake/meat_40.jpg',
+  'meat-60':  '/build/media/samples/meal-intake/meat_60.jpg',
+  'meat-80':  '/build/media/samples/meal-intake/meat_80.jpg',
+  'meat-100': '/build/media/samples/meal-intake/meat_100.jpg',
 };
 
 /**

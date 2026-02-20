@@ -31,7 +31,7 @@ npm start
 案件提案用デモアプリ。現在のデモ: **食事摂取量AI判定**
 
 ### 技術スタック
-- **サーバー:** Express + Handlebars (ESモジュール、`"type": "module"`)
+- **サーバー:** Express (ESモジュール、`"type": "module"`)
 - **クライアント:** Vanilla JS + Tailwind CSS + DaisyUI、webpackでバンドル
 - **AI:** Gemini 3 Flash (AI Studio APIキー認証)
 - **ホスティング:** Cloudflare Workers (`nodejs_compat`)
@@ -39,13 +39,18 @@ npm start
 ### 主要パターン
 
 - **サーバー側importエイリアス:** `#~/` がプロジェクトルートにマッピング (package.jsonの`"imports"`)
-- **テンプレート:** Handlebarsテンプレートを JS template literal でエクスポート、`lib/render.js` でコンパイル（Workers互換のためfs不使用）
+- **テンプレート:** JS template literal 関数でエクスポート、`lib/render.js` が呼び出し（Workers互換のためfs・Handlebars不使用）
 - **webpack出力:** `client/src/` → `public/build/` (JS, CSS, メディア)
 - **Tailwindスキャン対象:** `views/**/*.js` と `client/src/**/*.js`
 - **レート制限:** `middlewares/dailyLimit.js` で1日50回（インメモリ、再起動でリセット）
 - **nodemon除外:** `client/`, `public/`, `views/`, `data/`
 - **リクエストボディ上限:** 100MB (base64画像用)
 - **AI応答:** 決定的設定 (temperature=0, topP=0, topK=1) + 構造化JSONスキーマ
+- **Workers エントリ:** `src/worker.js` で `httpServerHandler`（`cloudflare:node`）を使用。Express を Workers の fetch ハンドラに変換
+- **iconv-lite シム:** `shims/iconv-lite.js`。wrangler バグ回避で `wrangler.toml` の `[alias]` で差し替え
+- **Gemini クライアント:** 遅延初期化（Workers のシークレットはデプロイ検証時に未定義のため）
+- **静的ファイル:** ローカルは `express.static`、Workers は Cloudflare Assets が配信（`import.meta.url` の try/catch で切り替え）
+- **アセットファイル名:** ASCII のみ（日本語や `%` を含むパスは Wrangler で失敗する）
 
 ### ルート構成
 - `GET /` — 食事摂取量判定ページ
