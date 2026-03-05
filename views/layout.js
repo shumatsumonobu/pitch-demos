@@ -7,7 +7,7 @@ export default (data) => `<!DOCTYPE html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-  <link href="/build/meal-intake.css" rel="stylesheet" type="text/css" />
+  <link href="/build/${data.css || 'meal-intake'}.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="min-h-screen bg-base-200">
   <!-- Navbar -->
@@ -21,12 +21,14 @@ export default (data) => `<!DOCTYPE html>
         </div>
         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 text-base-content rounded-box z-10 mt-3 w-52 p-2 shadow-lg">
           <li><a href="/" class="${data.isHome ? 'font-semibold' : ''}">食事摂取量</a></li>
+          <li><a href="/shelf-stock" class="${data.isShelfStock ? 'font-semibold' : ''}">商品棚在庫</a></li>
           <li><a href="/status" class="${data.isStatus ? 'font-semibold' : ''}">使用状況</a></li>
         </ul>
       </div>
       <a href="/" class="btn btn-ghost text-xl font-bold tracking-tight">Pitch Demos</a>
       <div class="hidden lg:flex ml-6 gap-6">
         <a href="/" class="text-sm ${data.isHome ? 'text-base-content' : 'text-base-content/60 hover:text-base-content'} transition-colors">食事摂取量</a>
+        <a href="/shelf-stock" class="text-sm ${data.isShelfStock ? 'text-base-content' : 'text-base-content/60 hover:text-base-content'} transition-colors">商品棚在庫</a>
         <a href="/status" class="text-sm ${data.isStatus ? 'text-base-content' : 'text-base-content/60 hover:text-base-content'} transition-colors">使用状況</a>
       </div>
     </div>

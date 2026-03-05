@@ -5,6 +5,7 @@ import url from 'node:url';
 import dailyLimit from './middlewares/dailyLimit.js';
 import indexRouter from './routes/index.js';
 import mealIntakeApiRouter from './routes/api/meal-intake.js';
+import shelfStockApiRouter from './routes/api/shelf-stock.js';
 import statusApiRouter from './routes/api/status.js';
 
 const app = express();
@@ -24,6 +25,7 @@ try {
 // ルート
 app.use('/', indexRouter);
 app.use('/api', dailyLimit, mealIntakeApiRouter);
+app.use('/api', dailyLimit, shelfStockApiRouter);
 app.use('/api', statusApiRouter);
 
 // 404ハンドラ

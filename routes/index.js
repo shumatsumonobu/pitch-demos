@@ -17,6 +17,19 @@ router.get('/', (req, res) => {
 });
 
 /**
+ * 商品棚在庫チェックビュー
+ * @name GET /shelf-stock
+ */
+router.get('/shelf-stock', (req, res) => {
+  renderView(res, 'shelf-stock', {
+    title: '商品棚 在庫チェック | Pitch Demos',
+    css: 'shelf-stock',
+    script: '/build/shelf-stock.js',
+    isShelfStock: true,
+  });
+});
+
+/**
  * 使用状況ビュー
  * @name GET /status
  */

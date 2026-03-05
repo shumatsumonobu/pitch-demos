@@ -14,6 +14,7 @@ module.exports = {
   },
   entry: {
     'meal-intake': './src/meal-intake.js',
+    'shelf-stock': './src/shelf-stock.js',
   },
   output: {
     path: path.resolve(__dirname, '../public/build'),
